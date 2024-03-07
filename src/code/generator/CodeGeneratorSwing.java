@@ -81,7 +81,7 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
                 .addComponent(btnClick)
                 .addGap(42, 42, 42)
                 .addComponent(lblResultado)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
         );
 
         pack();
@@ -92,7 +92,6 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTextoActionPerformed
 
     private void btnClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClickActionPerformed
-        // TODO add your handling code here:
         String palavra = txtTexto.getText();
         int soma = 0;
         int count = 0;
@@ -101,7 +100,6 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
             // Verifica se o caractere não é um espaço em branco
             if (palavra.charAt(i) != ' ') {
                 // Imprime o caractere seguido do seu valor ASCII
-                // System.out.printf("%c%03d\n", palavra.charAt(i), (int) palavra.charAt(i));
                 formula += String.format ("%c%03d<br>", palavra.charAt(i), (int) palavra.charAt(i));
                 // Adiciona o valor ASCII do caractere à soma
                 soma += (int) palavra.charAt(i);
@@ -115,6 +113,11 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
             // Arredonda a média para o número inteiro mais próximo
             int media_arredondada = (int) Math.round(media);
             // Imprime a média arredondada e a letra correspondente ao valor arredondado
+            // Aqui estamos criando uma string formatada usando String.format().
+            // "%d" é um marcador de posição para um número inteiro (media_arredondada).
+            // "%c" é um marcador de posição para um caractere (correspondente ao valor ASCII).
+            // media_arredondada é passada como argumento para o marcador de posição "%d".
+            // (char) media_arredondada é passada como argumento para o marcador de posição "%c".
             String complemento = String.format("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada);
             String resultado = String.format("<br>Codigo = %d%c </html>", media_arredondada, (char) media_arredondada);
             lblResultado.setText(formula + complemento + resultado);
