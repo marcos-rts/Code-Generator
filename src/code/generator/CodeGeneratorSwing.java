@@ -26,21 +26,104 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtTexto = new javax.swing.JTextField();
+        lblMensagem = new javax.swing.JLabel();
+        btnClick = new javax.swing.JButton();
+        lblResultado = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtTexto.setText("Digite aqui");
+        txtTexto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTextoActionPerformed(evt);
+            }
+        });
+
+        lblMensagem.setText("Palavra:");
+
+        btnClick.setText("Gerar");
+        btnClick.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClickActionPerformed(evt);
+            }
+        });
+
+        lblResultado.setText("Resultado vai aparecer aqui");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(btnClick))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblResultado)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblMensagem)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTexto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMensagem))
+                .addGap(31, 31, 31)
+                .addComponent(btnClick)
+                .addGap(42, 42, 42)
+                .addComponent(lblResultado)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTextoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTextoActionPerformed
+
+    private void btnClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClickActionPerformed
+        // TODO add your handling code here:
+        String palavra = txtTexto.getText();
+        int soma = 0;
+        int count = 0;
+        String formula = "<html>";
+        for (int i = 0; i < palavra.length(); i++) {
+            // Verifica se o caractere não é um espaço em branco
+            if (palavra.charAt(i) != ' ') {
+                // Imprime o caractere seguido do seu valor ASCII
+                // System.out.printf("%c%03d\n", palavra.charAt(i), (int) palavra.charAt(i));
+                formula += String.format ("%c%03d<br>", palavra.charAt(i), (int) palavra.charAt(i));
+                // Adiciona o valor ASCII do caractere à soma
+                soma += (int) palavra.charAt(i);
+                // Incrementa o contador de letras
+                count++;
+            }
+        }
+        if (count > 0) {
+            // Calcula a média dos valores ASCII
+            double media = (double) soma / count;
+            // Arredonda a média para o número inteiro mais próximo
+            int media_arredondada = (int) Math.round(media);
+            // Imprime a média arredondada e a letra correspondente ao valor arredondado
+            //System.out.printf("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada);
+            String resultado = String.format("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada, "</html>");
+            lblResultado.setText(formula + resultado);
+        } else {
+            // Caso nenhuma letra seja encontrada na palavra inserida
+            System.out.println("Nenhuma letra encontrada para calcular a média.");
+        }
+        
+    }//GEN-LAST:event_btnClickActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +161,9 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClick;
+    private javax.swing.JLabel lblMensagem;
+    private javax.swing.JLabel lblResultado;
+    private javax.swing.JTextField txtTexto;
     // End of variables declaration//GEN-END:variables
 }
