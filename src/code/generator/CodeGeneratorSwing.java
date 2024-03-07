@@ -115,9 +115,9 @@ public class CodeGeneratorSwing extends javax.swing.JFrame {
             // Arredonda a média para o número inteiro mais próximo
             int media_arredondada = (int) Math.round(media);
             // Imprime a média arredondada e a letra correspondente ao valor arredondado
-            //System.out.printf("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada);
-            String resultado = String.format("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada, "</html>");
-            lblResultado.setText(formula + resultado);
+            String complemento = String.format("Média arredondada dos valores ASCII: %d - Letra correspondente: %c\n", media_arredondada, (char) media_arredondada);
+            String resultado = String.format("<br>Codigo = %d%c </html>", media_arredondada, (char) media_arredondada);
+            lblResultado.setText(formula + complemento + resultado);
         } else {
             // Caso nenhuma letra seja encontrada na palavra inserida
             System.out.println("Nenhuma letra encontrada para calcular a média.");
